@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<!-- Temat: selektory -->
+<html lang="pl">
+	<head>
+		<meta charset="UTF-8">
+		<title>Selektory</title>
+		<style>
+		* {
+			box-sizing: border-box;
+			margin: 0;
+			padding: 0;
+			font-family: sans-serif;
+			color: #111;
+		}
+		code {
+			font-family: sans-serif;
+			color: #444;
+			font-style: italic;
+		}
+		header, div, footer {
+			background-color: #DDDDDD;
+			/* #e3e1cb */
+			border: 1.5px solid black;
+		}
+		header {
+			text-align: center;
+			border-bottom-width: 3px;
+			position: fixed;
+			width: 100%;
+			height: 70px;
+			z-index: 1;
+		}
+		#main {
+			position: relative;
+			top: 70px;
+			margin: 0 auto;
+			border-style: none;
+			display: flex;
+			z-index: 0;
+			width: 100%;
+		}
+		#left {
+			position: sticky;
+			top: 70px;
+			height: calc(100vh - 43px);
+			width: 17%
+		}
+		#left, #content, #right {
+			border-top-width: 0;
+		}
+		#right { width: 29%; }
+		#content { width: 54%; }
+		#content, #right {
+			padding: 3px;
+		}
+		footer {
+			margin-top: 70px;
+			width: 100%;
+		}
+		nav ul {
+			list-style: none;
+		}
+		nav a {
+			/* button */
+			display: block;
+			margin: 10px 5%;
+			border: 3px solid blue;
+			border-radius: 30px;
+			padding: 5px;
+			
+			/* text */
+			text-align: center;
+			text-decoration: none;
+		}
+		nav a:link, nav a:visited {
+			background-color: #AAAAAA;
+		}
+		nav a:hover, nav a:focus {
+			background-color: #777777;
+		}
+		span { scroll-margin-top: 70px; }
+		h1 { font-size: 55px; }
+		h2 { margin: 6px 6px 3px 6px; }
+		h3 { margin: 3px 4px; }
+		p { margin: 0px 6px; margin-bottom: 4px;}
+		p, a, li, tr { font-size: 20px; }
+		li { margin: 1px 3px; }
+		ul.normal { margin-left: 20px; }
+		table {
+			border-collapse: collapse;
+			margin: 7px 9px;
+		}
+		table, th, td {
+			border: 2px solid blue;
+		}
+		th { background-color: #999999; }
+		td { background-color: #AAAAAA; text-align: left; }
+		th, td { padding: 8px; }
+		th, td.c { text-align: center; }
+		img {
+			border-radius: 10%;
+			height: auto;
+			margin-left: 10px;
+		}
+		</style>
+	</head>
+	<body>
+		<header>
+		<h1>Selektory CSS</h1>
+		</header>
+		<div id="main">
+			<div id="left">
+			<nav>
+				<ul>
+					<li><a href="#start">START</a></li>
+					<li><a href="#selektory">SELEKTORY</a></li>
+					<li><a href="#atrib">SELEKTORY ATRYBUTÓW</a></li>
+					<li><a href="#kombinatory">KOMBINATORY</a></li>
+					<li><a href="#end">KONIEC</a></li>
+				</ul>
+			</nav>
+			</div>
+			<div id="content">
+				<span id="start"></span>
+				<span id="selektory"></span>
+				<h2>Selektory</h2>
+				<img src="./img/basic_selectors_1.png" style="max-width: 55%;"></img>
+				<table>
+					<tr>
+						<th>selektor</th>
+						<th>wyjaśnienie</th>
+					</tr>
+					<tr>
+						<td><code>*</code></td>
+						<td>Wybiera wszystkie elementy.</td>
+					</tr>
+					<tr>
+						<td><code>znacznik</code></td>
+						<td>Wybiera elementy reprezentowane takim znacznikiem.</td>
+					</tr>
+					<tr>
+						<td><code>#id</code></td>
+						<td>Wybiera elementy z określonym id, np. <code>&lt;p id="id"&gt;</code></td>
+					</tr>
+					<tr>
+						<td><code>.class</code></td>
+						<td>Wybiera elementy określonej klasy, np. <code>&lt;p class="class"&gt;</code></td>
+					</tr>
+					<tr>
+						<td><code>:pseudoclass</code></td>
+						<td>Wybiera elementy wybrane za pomocą tzw. pseudoklasy. Każda pseudoklasa uaktywnia się w ściśle określonych okolicznościach. Pseudoklasy mogą być definiowane i wywoływane tylko przez przeglądarkę.</td>
+					</tr>
+					</table>
+				<span id="atrib"></span>
+				<h2>Selektory atrybutów</h2>
+				<table>
+					<tr>
+						<th>selektor</th>
+						<th>wyjaśnienie</th>
+					</tr>
+					<tr>
+						<td><code>[atrybut]</code></td>
+						<td>Wybiera wszystkie elementy z danym atrybutem.</td>
+					</tr>
+					<tr>
+						<td><code>[atrybut=wartość]</code></td>
+						<td>Wybiera wszystkie elementy z danym atrybutem ustawionym na daną wartość.</td>
+					</tr>
+					<tr>
+						<td><code>[atrybut~=słowo]</code></td>
+						<td>Wybiera wszystkie elementy z danym atrybutem zawierającym dane słowo.</td>
+					</tr>
+					<tr>
+						<td><code>[atrybut|=wartość]</code></td>
+						<td>Wybiera wszystkie elementy z danym atrybutem ustawionym na <code>wartość</code> lub zaczynającym się od <code>wartość</code> + <code>-</code></td>
+					</tr>
+					<tr>
+						<td><code>[atrybut^=wartość]</code></td>
+						<td>Wybiera wszystkie elementy z danym atrybutem zaczynającym się na daną wartość.</td>
+					</tr>
+					<tr>
+						<td><code>[atrybut$=wartość]</code></td>
+						<td>Wybiera wszystkie elementy z danym atrybutem kończącym się na daną wartość.</td>
+					</tr>
+					<tr>
+						<td><code>[atrybut*=wartość]</code></td>
+						<td>Wybiera wszystkie elementy z danym atrybutem zawierającym daną wartość.</td>
+					</tr>
+					</table>
+				<span id="kombinatory"></span>
+				<h2>Kombinatory</h2>
+				<img src="./img/basic_combinators_1.webp" style="max-width: 200%; height: auto"></img>
+				<table>
+					<tr>
+						<th>kombinator</th>
+						<th>wyjaśnienie</th>
+					</tr>
+					<tr>
+						<td><code>zn1 zn2</code></td>
+						<td>Wybiera wszystkie elementy zn2 będące potomkami zn1.</td>
+					</tr>
+					<tr>
+						<td><code>zn1 > zn2</code></td>
+						<td>Wybiera wszystkie elementy zn2 będące bezpośrednimi dziećmi elementu zn1.</td>
+					</tr>
+					<tr>
+						<td><code>zn1, zn2</code></td>
+						<td>Wybiera zarówno elementy zn1, jak i elementy zn2.</td>
+					</tr>
+					<tr>
+						<td><code>zn1 + zn2</code></td>
+						<td>Wybiera elementy zn2 które są po elementach zn1.</td>
+					</tr>
+					<tr>
+						<td><code>zn1 ~ zn2</code></td>
+						<td>Wybiera elementy zn2 które są przed elementami zn1.</td>
+					</tr>
+					
+				</table>
+				<span id="end"></span>
+			</div>
+			<div id="right">
+				<!--<p style="color:red"><b>WORK IN PROGRESS</b></p>-->
+				<h3>Co to selektory?</h3>
+				<p>Selektory służą do określenia, właściwości których elementów zostają zmienione przez regułę CSS.</p>
+				<p>Na przykład, jeśli chcemy, by nasza reguła CSS odnosiła się do elementów <code>&lt;p&gt;</code>, to wpisujemy <code>p</code> przed <code>{...}</code>.</p>
+			</div>
+		</div>
+		<footer>
+		© Adrian Włodarski 2027
+		</footer>
+	</body>
+</html>
